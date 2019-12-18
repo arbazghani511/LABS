@@ -1,0 +1,157 @@
+<html>
+<head>
+<style>
+table{
+border:1px solid blue;
+background:#EEEEEE;
+width: 180px;
+	height: 150px;
+	border : 1px solid black;
+	text-align: center;
+	color: black;
+	font-size: 30px;
+    
+}
+
+td {
+padding:8px;
+border: 1px solid red;
+text-align: center;
+font-weight: bold;
+font-family:Calibri;
+}
+
+.click {
+  background-color: grey;
+  transition: background-color 0.5s ease-out;
+}
+
+.click:active {
+  background-color: ;
+}
+</style>
+</head>
+<body>
+<centre>
+<table cellspacing="1px" bordercolor="#EEEEEE";>
+<tr> <td colspan='5' id="screen" style="background: yellow;text-align:right;height:40px;"></td></tr>
+
+<tr>
+<td class="click" onclick="getMC()">MC</td>
+<td class="click" id="zero" onclick="addMe(this)">0</td>
+<td class="click" id="one" onclick="addMe(this)">1</td>
+<td class="click" id="two" onclick="addMe(this)">2</td>
+<td class="click" id="plus" onclick="addMe(this)">+</td>
+</tr>
+
+<tr>
+<td class="click" onclick="getMS()">MS</td>
+<td class="click" id="three" onclick="addMe(this)">3</td>
+<td class="click" id="four" onclick="addMe(this)">4</td>
+<td class="click" id="five" onclick="addMe(this)">5</td>
+<td class="click" id="minus" onclick="addMe(this)">-</td>
+</tr>
+
+<tr>
+<td class="click" onclick="getMR()">MR</td>
+<td class="click" id="six" onclick="addMe(this)">6</td>
+<td class="click" id="seven" onclick="addMe(this)">7</td>
+<td class="click" id="eight" onclick="addMe(this)">8</td>
+<td class="click" id="mul"onclick="addMe(this)">*</td>
+</tr>
+
+<tr>
+<td class="click" onclick="getMplus()">M+</td>
+<td class="click" id="nine" onclick="addMe(this)">9</td>
+<td class="click" onclick="addPM()">±</td>
+<td class="click" onclick="getMe()">=</td>
+<td class="click" id="div" onclick="addMe(this)">/</td>
+</tr>
+
+<tr>
+<td class="click" onclick="getNumDiv()">1/x</td>
+<td class="click" onclick="addDecimal()">.</td>
+<td class="click" onclick="getMul2()">x2</td>
+<td class="click" onclick="getRoot()">√</td>
+<td class="click" onclick="clearMe()">C</td>
+</tr>
+</table>
+</centre>
+
+<script>
+
+var answer;
+var ms = 0;
+
+function addMe(e){
+document.getElementById("screen").innerHTML += document.getElementById(e.id).innerHTML;
+    }
+
+
+function getMe(){
+answer = eval(document.getElementById("screen").innerHTML);
+    document.getElementById("screen").innerHTML = answer; }
+   
+
+function clearMe(){
+document.getElementById("screen").innerHTML = "";
+    answer = 0;}
+   
+
+function getMS(){
+ms = parseInt(document.getElementById("screen").innerHTML);}
+
+
+function getMC(){
+ms = 0;}
+
+
+function getMR(){
+document.getElementById("screen").innerHTML = ms;}
+   
+   
+function getMplus(){
+temp = parseInt(document.getElementById("screen").innerHTML);
+ms = temp + ms;
+    }
+   
+   
+function getNumDiv(){
+answer = parseInt(document.getElementById("screen").innerHTML);
+answer = 1 / answer;
+    document.getElementById("screen").innerHTML = answer;}
+       
+       
+function getMul2(){
+answer = parseInt(document.getElementById("screen").innerHTML);
+    answer = answer * answer;
+    document.getElementById("screen").innerHTML = answer;}
+   
+   
+function getRoot(){
+answer = parseInt(document.getElementById("screen").innerHTML);
+    answer = Math.sqrt(answer);
+    document.getElementById("screen").innerHTML = answer;}
+
+
+function addDecimal(){
+answer = document.getElementById("screen").innerHTML;
+answer = answer + ".0";
+    document.getElementById("screen").innerHTML = answer;}
+
+
+function addPM(){
+answer = document.getElementById("screen").innerHTML;
+
+    if(answer[0] == "-"){
+    answer = answer.replace("-",""); }
+    else {
+    answer = "-" + answer; }
+   
+    document.getElementById("screen").innerHTML = answer; }
+
+
+</script>
+</centre>
+</body>
+</html>
